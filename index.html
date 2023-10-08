@@ -1,112 +1,33 @@
 
-<!DOCTYPE HTML>
-<html>
-  
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="生成随机密码,密码生成器" />
-    <meta name="description" content="生成随机密码" />
-    <title>生成随机密码 - 密码生成器 - 密码批量生成器</title>
-
-    <script src="js/js.js"></script>
-
-
-
-    <link href="css/css.css" rel="stylesheet" type="text/css" />
-    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.4/clipboard.min.js"></script>   <!-- 复制密码 -->
-
-  
-  <body>
-
-
-      <!-- 左侧开始 -->
-
-            <table border="0" cellpadding="8" cellspacing="1" id="suijimimashengcheng_jtable">
-              <tr>
-                <td width="25%" bgcolor="#F5F5F5">所用字符</td>
-                <td width="75%" bgcolor="#FFFFFF" colspan="3">
-                  <span style="display:inline-block">
-                    <input id="ss_xx" name="ss_xx" type="checkbox" checked="checked" onchange="onchange_checkbox_localStorage_set('ss_xx')">
-                    <label for="ss_xx">a-z</label></span>
-                  <span style="display:inline-block">
-                    <input id="ss_dx" name="ss_dx" type="checkbox" checked="checked" onchange="onchange_checkbox_localStorage_set('ss_dx')">
-                    <label for="ss_dx">A-Z</label></span>
-                  <span style="display:inline-block">
-                    <input id="ss_sz" name="ss_sz" type="checkbox" checked="checked" onchange="onchange_checkbox_localStorage_set('ss_sz')">
-                    <label for="ss_sz">0-9</label></span>
-                  <span style="display:inline-block">
-                    <input id="ss_fh" name="ss_fh" type="checkbox" onchange="ss_fh();onchange_checkbox_localStorage_set('ss_fh')">
-                    <label for="ss_fh">
-                      <input id="ss_fh_value" type="text" value="!@#$%^&*" size="2" disabled="disabled" onchange="onchange_text_localStorage_set('ss_fh_value')"></label>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td bgcolor="#F5F5F5">排除字符</td>
-                <td bgcolor="#FFFFFF" colspan="3">
-                  <span style="display:inline-block">
-                    <input id="pc_fh" name="pc_fh" type="checkbox" onchange="pc_fh();onchange_checkbox_localStorage_set('pc_fh')">
-                    <label for="pc_fh">
-                      <input id="pc_fh_value" type="text" value="iIl1o0O" disabled="disabled" onchange="onchange_text_localStorage_set('pc_fh_value')"></label>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td bgcolor="#F5F5F5">密码长度</td>
-                <td bgcolor="#FFFFFF">
-                  <select id="ss_cd" name="ss_cd" class="all_srk_1" onchange="onchange_text_localStorage_set('ss_cd')"></select>
-                  <script>select_sheng_cheng("ss_cd", 1, 99, false, false, 16);</script>
-                  <label for="ss_cd">位</label></td>
-                <td bgcolor="#F5F5F5">密码数量</td>
-                <td bgcolor="#FFFFFF">
-                  <select id="ss_sl" name="ss_sl" class="all_srk_1" onchange="onchange_text_localStorage_set('ss_sl')"></select>
-                  <script>select_sheng_cheng("ss_sl", 1, 99);</script>
-                  <label for="ss_sl">个</label></td>
-              </tr>
-              <tr>
-                <td bgcolor="#FFFFFF" colspan="4" align="center">
-                  <input id="ss_anniu" class="all_an_1" type="button" onclick="ss_jc_jc();" value="生成密码"></td>
-              </tr>
-              <tr id="jie_guo">
-                <td bgcolor="#FFFFFF" colspan="4">
-                  <input id="password_box" type="text" class="all_srk_1" style="background:red;color:#fff;" />
-                  <div id="fu_zhi_an_niu">
-                    <input class="all_an_1 jieguo_text_copy_btn" data-clipboard-target="#password_box" type="button" value="复制"></div>
-                  <ul id="password_checks" class="mmscq_checks"></ul>
-                </td>
-              </tr>
-              <tr id="jie_guo_pi_liang">
-                <td bgcolor="#FFFFFF" colspan="4">
-                  <textarea id="password_box_pi_liang" class="all_srk_1"></textarea>
-                  <div>
-                    <input class="all_an_1 jieguo_text_copy_btn" data-clipboard-target="#password_box_pi_liang" type="button" value="复制"></div>
-                </td>
-              </tr>
-              <tbody id="suijimimashengcheng_ji_lu_she_zhi">
-                <tr>
-                  <td bgcolor="#FFFFFF" colspan="4">
-                    <input id="suijimimashengcheng_ji_lu_sz" name="suijimimashengcheng_ji_lu_sz" type="checkbox" checked="checked" onchange="onchange_checkbox_localStorage_set('suijimimashengcheng_ji_lu_sz')">
-                    <label for="suijimimashengcheng_ji_lu_sz">记录历史记录</label>
-                    <div id="suijimimashengcheng_ji_lu_cha_kan" onclick="suijimimashengcheng_ji_lu_cha_kan()">查看历史记录
-                      <i class="down"></i></div>
-                    <div id="suijimimashengcheng_ji_lu_yin_cang" onclick="suijimimashengcheng_ji_lu_yin_cang()">隐藏历史记录
-                      <i class="up"></i></div>
-                  </td>
-                </tr>
-              </tbody>
-              <tbody id="suijimimashengcheng_ji_lu" class="mx_table"></tbody>
-            </table>
-            <!-- 生成密码 -->
-            <script src="js/suijimimashengcheng.js"></script>
-
-
-      <!-- 左侧结束 -->
-
-    </body>
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>M3U8-视频解析-不支持Cookie</title>
+<style type="text/css">body,html,div{padding: 0;margin: 0;width:100%;height:100%;psotion:relative;"}</style>
+</head>
+<body>
+<div id="a1" style="psotion:relative;"></div>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/gh/aaapcc/static/m3u8play/ldg_ckplayer/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript">
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+    var vid = GetQueryString("url");
+	var index = vid.indexOf("http://");
+	// if(index == 0&&document.location.protocol=="http:"){
+	// 	document.location.protocol="https:";
+	// }
+var videoObject = {
+		container: '#a1',//"#"代表容器的ID，"."或""代表容器的class
+		variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+		autoplay:true,//自动播放
+		video:vid//视频地址
+	};
+	var player=new ckplayer(videoObject);
+  </script>
+</body>
 </html>
-<!-- 172.31.64.167 |-ok-| -->

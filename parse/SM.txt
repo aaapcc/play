@@ -1,0 +1,2 @@
+调用：
+http://xxxx.com/?url=
