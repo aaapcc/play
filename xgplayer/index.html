@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+        <meta name="referrer"content="no-referrer">
+        <meta http-equiv="Access-Control-Allow-Origin"content="*">
+        <title>本地-播放器</title>
+        <style type="text/css">html,body{width:100%;height:100%;margin:auto;overflow:hidden}body{display:flex}#mse{flex:auto}</style>
+        <link rel="stylesheet"href="//unpkg.byted-static.com/xgplayer/3.0.9/dist/index.min.css"/>
+        <script type="text/javascript">window.addEventListener('resize',function(){document.getElementById('mse').style.height=window.innerHeight+'px'});</script>
+    </head>
+
+    <body>
+        <div id="mse"></div>
+        <script charset="utf-8"src="//unpkg.byted-static.com/xgplayer/3.0.9/dist/index.min.js"></script>
+        <script charset="utf-8"src="//unpkg.byted-static.com/xgplayer-hls/3.0.9/dist/index.min.js"></script>
+    </body>
+    <script type="text/javascript">let m3u8Url='[[${url}]]';if(!m3u8Url||m3u8Url.indexOf('[[${url')>-1){let search=location.search;search=search.replace("?url=","");search=search.replace("?URL=","");m3u8Url=search};window.onload=()=>{let time=localStorage.getItem(m3u8Url);let save=false;let config={id:'mse',url:m3u8Url,autoplay:true,playsinline:true,airplay:true,videoInit:false,height:window.innerHeight,width:window.innerWidth,marginControls:false,enableContextmenu:true,closePauseVideoFocus:true,closePlayVideoFocus:true,playbackRate:[2,1.5,1,0.75,0.5],startTime:time,PlayTimeHideDelay:5,pip:true,screenShot:true,miniprogress:1,volume:1,plugins:[],};let player;if(document.createElement('video').canPlayType('application/vnd.apple.mpegurl')){player=new Player(config)}else if(HlsPlayer.isSupported()){config.plugins.push(HlsPlayer);config.hls={retryCount:30,retryDelay:1000,loadTimeout:10000,startTime:time,fetchOptions:{mode:'cors'}};player=new Player(config)}player.once('complete',()=>{});player.on('play',function(){save=true});player.on('playing',function(){save=true});player.on('canplay',function(){save=false});player.on('waiting',function(){save=false});player.on('pause',function(){save=false});player.on('ended',function(){save=false});player.on('error',function(e){save=false});setInterval(function(){if(save){localStorage.setItem(m3u8Url,player.currentTime)}},1000)}</script>
+</html>
